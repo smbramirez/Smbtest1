@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dentofarm Resort</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background: url('bg1.jpg') no-repeat center center fixed; /* Changed to bg1.jpg */
+      background-size: cover;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .header {
+      background: rgba(0, 0, 0, 0.6);
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+      font-size: 2rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.5), inset -5px -5px 10px rgba(255, 255, 255, 0.2);
+    }
+
+    .main {
+      display: flex;
+      flex: 1;
+      overflow: hidden;
+    }
+
+    .sidebar {
+      width: 250px;
+      background: rgba(0, 0, 0, 0.7);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+      box-shadow: 5px 0 15px rgba(0, 0, 0, 0.5);
+      overflow-y: auto;
+    }
+
+    .sidebar .menu-item {
+      padding: 15px;
+      margin-bottom: 10px;
+      background: rgba(255, 255, 255, 0.8);
+      color: #333;
+      text-transform: uppercase;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s, color 0.3s;
+      text-decoration: none;
+      display: block;
+    }
+
+    .sidebar .menu-item:hover {
+      background: #fff;
+      color: #6c63ff;
+    }
+
+    .content {
+      flex: 1;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: 16px;
+      margin: 20px;
+    }
+
+    .content img {
+      max-width: 60%;
+      border-radius: 16px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      margin-top: 20px;
+    }
+
+    .welcome {
+      font-size: 1.5rem;
+      color: #fff;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    Welcome to Dentofarm Resort
+  </div>
+  <div class="main">
+    <div class="sidebar">
+      <a href="home.html" class="menu-item">Home</a>
+      <div class="menu-item" onclick="showAbout()">About</div>
+      <div class="menu-item">Contact</div>
+    </div>
+    <div class="content" id="content-area">
+      <div class="welcome">Welcome to Dentofarm Resort</div>
+      <img src="bg1.jpg" alt="Resort Image" id="content-image">
+      <p id="content-description">Enjoy a luxurious and relaxing experience at our resort.</p>
+    </div>
+  </div>
+
+  <script>
+    function showAbout() {
+      const contentImage = document.getElementById("content-image");
+      const contentDescription = document.getElementById("content-description");
+      contentImage.style.display = "none"; 
+      contentDescription.textContent = "Vision: To provide a luxurious and relaxing experience for all guests.";
+    }
+  </script>
+</body>
+</html>

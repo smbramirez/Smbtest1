@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dentofarm Resort</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(120deg, #e0e0e0, #ffffff);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100vw;
+      height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    .header, .sidebar, .content {
+      width: 100%;
+      max-width: 1200px;
+    }
+
+    .header {
+      background: linear-gradient(145deg, #6c63ff, #837dff);
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+      font-size: 2rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      box-shadow: inset 5px 5px 10px #5a57d4, inset -5px -5px 10px #938eff;
+    }
+
+    .sidebar {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      background: linear-gradient(145deg, #ffffff, #dcdcdc);
+      padding: 10px;
+    }
+
+    .menu-item {
+      padding: 10px 15px;
+      background: linear-gradient(145deg, #ffffff, #dcdcdc);
+      color: #333;
+      text-transform: uppercase;
+      font-weight: bold;
+      border-radius: 8px;
+      text-decoration: none;
+      text-align: center;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .menu-item:hover {
+      background: #fff;
+      color: #6c63ff;
+    }
+
+    .content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: 16px;
+      padding: 20px;
+      margin-top: 20px;
+      width: 100%;
+      position: relative;
+    }
+
+    .gallery-group {
+      margin-top: 40px;
+      width: 100%;
+      position: relative;
+    }
+
+    .gallery-section {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+      gap: 10px;
+      padding: 10px;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+    }
+
+    .image-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .thumbnail {
+      width: 50px;
+      height: 50px;
+      cursor: pointer;
+      border-radius: 8px;
+      transition: transform 0.3s;
+    }
+
+    .thumbnail:hover {
+      transform: scale(1.1);
+    }
+
+    .caption-group {
+      margin-top: 10px;
+      font-size: 1rem; /* Set font size back to a normal value */
+      font-weight: bold;
+      text-transform: uppercase;
+      color: #fff;
+      text-align: left;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+    }
+
+    .caption-group .gallery-name {
+      font-size: 1.2rem; /* Normal font size */
+    }
+
+    .minimize-btn, .maximize-btn {
+      background: #fff;
+      color: #333;
+      border: none;
+      padding: 6px 10px; /* Reduced padding for normal button size */
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem; /* Normal font size for buttons */
+      margin-left: 10px;
+    }
+
+    .minimized {
+      display: none;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 16px;
+    }
+
+    .rolling-out {
+      animation: rollOut 1s forwards;
+    }
+
+    @keyframes rollOut {
+      0% {
+        transform: rotate(0deg) scaleX(1);
+        opacity: 1;
+      }
+      50% {
+        transform: rotate(45deg) scaleX(0.8);
+        opacity: 0.7;
+      }
+      100% {
+        transform: rotate(90deg) scaleX(0);
+        opacity: 0;
+        display: none;
+      }
+    }
+
+    .content-hidden {
+      display: none;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="header">Welcome to Dentofarm Resort</div>
+  <div class="sidebar">
+    <a href="home.html" class="menu-item" onclick="rollOutAndRedirect('home.html'); return false;">Home</a>
+  </div>
+  <div class="content">
+    <div class="gallery">
+      <div class="gallery-group">
+        <div class="caption-group">
+          <div class="gallery-name">Office and Registration</div>
+          <div class="minimize-maximize">
+            <button class="minimize-btn" onclick="toggleGallery('office-gallery', true)">-</button>
+            <button class="maximize-btn minimized" onclick="toggleGallery('office-gallery', false)">+</button>
+          </div>
+        </div>
+        <div class="gallery-section" id="office-gallery">
+          <div class="image-container"><img src="B2(1).jpg" class="thumbnail" onclick="showModal(this.src)"></div>
+          <div class="image-container"><img src="B2(2).jpg" class="thumbnail" onclick="showModal(this.src)"></div>
+          <div class="image-container"><img src="B2(3).jpg" class="thumbnail" onclick="showModal(this.src)"></div>
+          <div class="image-container"><img src="B2(4).jpg" class="thumbnail" onclick="showModal(this.src)"></div>
+          <div class="image-container"><img src="B2(5).jpg" class="thumbnail" onclick="showModal(this.src)"></div>
+        </div>
+      </div>
+
+      <div class="gallery-group">
+        <div class="caption-group">
+          <div class="gallery-name">Yellow Villa</div>
+          <div class="minimize-maximize">
+            <button class="minimize-btn" onclick="toggleGallery('yellow-villa-gallery', true)">-</button>
+            <button class="maximize-btn minimized" onclick="toggleGallery('yellow-villa-gallery', false)">+</button>
+          </div>
+        </div>
+        <div class="gallery-section" id="yellow-villa-gallery">
+          <div class="image-container"><img src="B3(1).jpg" class="thumbnail" onclick="showModal(this.src)"></div>
+          <div class="image-container"><img src="B3(2).jpg" class="thumbnail" onclick="showModal(this.src)"></div>
+          <div class="image-container"><img src="B3(3).jpg" class="thumbnail" onclick="showModal(this.src)"></div>
+          <div class="image-container"><img src="B3(4).jpg" class="thumbnail" onclick="showModal(this.src)"></div>
+        </div>
+      </div>
+
+      <div class="gallery-group">
+        <div class="caption-group">
+          <div class="gallery-name">Resto Bar</div>
+          <div class="minimize-maximize">
+            <button class="minimize-btn" onclick="toggleGallery('Resto-Bar-gallery', true)">-</button>
+            <button class="maximize-btn minimized" onclick="toggleGallery('Resto-Bar-gallery', false)">+</button>
+          </div>
+        </div>
+        <div class="gallery-section" id="Resto-Bar-gallery">
+          <div class="image-container"><img src="B4(1).jpg" class="thumbnail" onclick="showModal(this.src)"></div>
+          <div class="image-container"><img src="B4(2).jpg" class="thumbnail" onclick="showModal(this.src)"></div>
+          <div class="image-container"><img src="B4(3).jpg" class="thumbnail" onclick="showModal(this.src)"></div>
+          <div class="image-container"><img src="B4(4).jpg" class="thumbnail" onclick="showModal(this.src)"></div>
+        </div>
+      </div>
+
+      <div class="gallery-group">
+        <div class="caption-group">
+          <div class="gallery-name">Function Hall Open Area</div>
+          <div class="minimize-maximize">
+            <button class="minimize-btn" onclick="toggleGallery('Functio-Hall-Open-Area-gallery', true)">-</button>
+            <button class="maximize-btn minimized" onclick="toggleGallery('Functio-Hall-Open-Area-gallery', false)">+</button>
+          </div>
+        </div>
+        <div class="gallery-section" id="Functio-Hall-Open-Area-gallery">
+          <div class="image-container"><img src="B5(1).jpg" class="thumbnail" onclick="showModal(this.src)"></div>
+          <div class="image-container"><img src="B5(2).jpg" class="thumbnail" onclick="showModal(this.src)"></div>
+          <div class="image-container"><img src="B5(3).jpg" class="thumbnail" onclick="showModal(this.src)"></div>
+          <div class="image-container"><img src="B5(4).jpg" class="thumbnail" onclick="showModal(this.src)"></div>
+          <div class="image-container"><img src="B5(5).jpg" class="thumbnail" onclick="showModal(this.src)"></div>
+          <div class="image-container"><img src="B5(6).jpg" class="thumbnail" onclick="showModal(this.src)"></div>
+          <div class="image-container"><img src="B5(7).jpg" class="thumbnail" onclick="showModal(this.src)"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="modal" onclick="hideModal()">
+    <img id="modal-img">
+  </div>
+
+  <script>
+    function rollOutAndRedirect(url) {
+      const body = document.querySelector('body');
+      body.classList.add('rolling-out');
+      setTimeout(function() {
+        body.classList.add('content-hidden');
+        window.location.href = url;
+      }, 1000);
+    }
+
+    function showModal(src) {
+      document.getElementById('modal-img').src = src;
+      document.getElementById('modal').style.display = 'flex';
+    }
+
+    function hideModal() {
+      document.getElementById('modal').style.display = 'none';
+    }
+
+    function toggleGallery(id, isMinimized) {
+      const gallery = document.getElementById(id);
+      const minimizeBtn = gallery.previousElementSibling.querySelector('.minimize-btn');
+      const maximizeBtn = gallery.previousElementSibling.querySelector('.maximize-btn');
+      
+      if (isMinimized) {
+        gallery.style.display = 'none';
+        minimizeBtn.classList.add('minimized');
+        maximizeBtn.classList.remove('minimized');
+      } else {
+        gallery.style.display = 'grid';
+        minimizeBtn.classList.remove('minimized');
+        maximizeBtn.classList.add('minimized');
+      }
+    }
+  </script>
+</body>
+</html>

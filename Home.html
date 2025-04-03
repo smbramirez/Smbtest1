@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Dentofarm Webpage</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(120deg, #e0e0e0, #ffffff);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      box-sizing: border-box;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 10px;
+      background: linear-gradient(145deg, #ffffff, #dcdcdc);
+      border-radius: 16px;
+      box-shadow: 10px 10px 20px #b8b8b8, -10px -10px 20px #ffffff;
+      overflow: hidden;
+    }
+
+    .header {
+      background: linear-gradient(145deg, #6c63ff, #837dff);
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+      font-size: 2rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      box-shadow: inset 5px 5px 10px #5a57d4, inset -5px -5px 10px #938eff;
+    }
+
+    .menu {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      padding: 15px;
+      gap: 10px;
+      background: linear-gradient(145deg, #ffffff, #dcdcdc);
+      box-shadow: 5px 5px 10px #b8b8b8, -5px -5px 10px #ffffff;
+    }
+
+    .menu-item {
+      flex: 1 1 calc(25% - 20px);
+      max-width: 200px;
+      padding: 10px 20px;
+      background: linear-gradient(145deg, #ffffff, #dcdcdc);
+      border-radius: 12px;
+      box-shadow: 3px 3px 6px #b8b8b8, -3px -3px 6px #ffffff;
+      text-align: center;
+      text-transform: uppercase;
+      font-size: 1rem;
+      font-weight: bold;
+      color: #333;
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+      text-decoration: none;
+    }
+
+    .menu-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 8px 8px 15px #aaaaaa, -8px -8px 15px #ffffff;
+    }
+
+    .content {
+      padding: 20px;
+      text-align: center;
+      font-size: 1rem;
+      color: #555;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 10px;
+      background: linear-gradient(145deg, #dcdcdc, #ffffff);
+      color: #888;
+      font-size: 0.9rem;
+      box-shadow: inset 3px 3px 6px #b8b8b8, inset -3px -3px 6px #ffffff;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 1024px) {
+      .menu-item {
+        flex: 1 1 calc(33.33% - 20px);
+      }
+
+      .header {
+        font-size: 1.5rem;
+      }
+
+      .content {
+        font-size: 0.95rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .menu-item {
+        flex: 1 1 calc(50% - 20px);
+      }
+
+      .header {
+        font-size: 1.2rem;
+      }
+
+      .content {
+        font-size: 0.9rem;
+      }
+
+      .footer {
+        font-size: 0.8rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .menu-item {
+        flex: 1 1 100%;
+      }
+
+      .header {
+        font-size: 1rem;
+        padding: 15px;
+      }
+
+      .content {
+        font-size: 0.85rem;
+      }
+
+      .footer {
+        font-size: 0.75rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      Welcome to Dentofarm Resort
+    </div>
+    <div class="menu">
+            <a href="http://localhost:8158/Tour.html" class="menu-item">Tour</a>
+      <a href="http://localhost:8158/Services.html" class="menu-item">Services</a>
+      <div class="menu-item">Reservation</div>
+    </div>
+    <div class="content">
+      <p>Welcome to Dentofarm, where you can enjoy your staycation, picnic, and more.</p>
+      <p>We are committed to providing the best service for our valued customers. Who’s that customer? You!</p>
+    </div>
+    <div class="footer">
+      © 2025 Dentofarm Webpage | Purok 6, Estrella, Rizal, Nueva Ecija
+    </div>
+  </div>
+</body>
+</html>
